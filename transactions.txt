@@ -1,0 +1,3 @@
+McDonalds,20.0,food
+Burger Kings,25.0,food
+Wendy's,85.0,food
