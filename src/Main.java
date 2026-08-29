@@ -15,18 +15,14 @@ public class Main {
             System.out.println("4. View by category");
             System.out.println("5. Exit");
             System.out.println("6. Reset all transactions");
-            System.out.print("Choose an option: ");
 
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            int choice = getValidInt(scanner, "Choose an option: ");
 
             if (choice == 1) {
                 System.out.println("Description: ");
                 String description = scanner.nextLine();
 
-                System.out.println("Amount: ");
-                double amount = scanner.nextDouble();
-                scanner.nextLine();
+                double amount = getValidDouble(scanner, "Amount: ");
 
                 System.out.print("Category: ");
                 String category = scanner.nextLine();
@@ -118,5 +114,33 @@ public class Main {
             System.out.println("Error loading transtions: " + e.getMessage());
         }
         return transactions;
+    }
+
+    public static int getValidInt(Scanner scanner, String prompt){
+        while (true){
+            System.out.print(prompt);
+            try{
+                int value = scanner.nextInt();
+                scanner.nextLine();
+                return value;
+            } catch(InputMismatchException e){
+                System.out.println("That's not a valid number, try again.");
+                scanner.nextLine();
+            }
+        }
+    }
+
+    public static double getValidDouble(Scanner scanner, String prompt){
+        while (true){
+            System.out.print(prompt);
+            try{
+                double value = scanner.nextDouble();
+                scanner.nextLine();
+                return value;
+            } catch(InputMismatchException e){
+                System.out.println("That's not a valid number, try again.");
+                scanner.nextLine();
+            }
+        }
     }
 }
